@@ -25,10 +25,6 @@
  */
 ?>
 <div class='oa-list oa-discussion-reply well clearfix <?php print $current_class; ?> <?php print $status_class; ?> <?php print $nid_class; ?>'>
-  <div class='pull-right user-badge no-border'>
-    <?php print $name; ?>
-    <?php print $field_user_picture; ?>
-  </div>
   <div class="accordion" id="oa-reply-accordion-<?php print $index; ?>">
     <div class="accordion-heading">
       <?php print $counter; ?>
@@ -39,16 +35,23 @@
               <span class="status"><?php print $unpublished; ?></span>
             <?php endif; ?>
             <?php print $timestamp; ?>
-            <?php print $created; ?>
+            <?php print $created; ?>&nbsp;
+            <?php print t('by') . " $name"; ?>
+            <?php print $field_user_picture; ?>
           </div>
+          <h5>
+            <?php
+              $header = empty($body_1) ? $title : $body_1;
+              print $header;
+            ?>
+          </h5>
         </div>
-        <h5>
-          <?php print empty($body_1) ? $title : $body_1; ?>
-        </h5>
       </div>
       <div id="oa-reply-body-<?php print $index; ?>" class="accordion-body collapse <?php print $in; ?>">
         <div class="accordion-inner">
-          <?php print $body; ?>
+          <?php if (strip_tags($body) !== $header):?>
+            <?php print $body; ?>
+          <?php endif; ?>
           <?php print $field_oa_media; ?>
           <div class="links">
             <?php print $edit_node; ?>

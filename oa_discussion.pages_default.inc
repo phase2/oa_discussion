@@ -75,7 +75,18 @@ function oa_discussion_default_page_manager_handlers() {
     $pane->type = 'views_panes';
     $pane->subtype = 'open_atrium_discussions-original_post';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'context_exists',
+          'settings' => array(
+            'exists' => '1',
+          ),
+          'context' => 'relationship_entity_from_field:oa_parent-node-node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'context' => array(
         0 => 'relationship_entity_from_field:oa_parent-node-node_1',

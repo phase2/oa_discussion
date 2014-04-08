@@ -39,13 +39,15 @@
             <?php print t('by') . " $name"; ?>
             <?php print $field_user_picture; ?>
           </div>
-          <?php if (strip_tags($body)):?>
-            <?php print $body; ?>
-          <?php endif; ?>
-          <?php print $field_oa_media; ?>
-          <div class="links">
-            <?php print $edit_node; ?>
-            <?php if (!empty($remove_link)): print $remove_link; endif; ?>
+          <div class="oa-reply-body">
+            <?php if (strip_tags($body)):?>
+              <?php print $body; ?>
+            <?php endif; ?>
+            <?php print $field_oa_media; ?>
+            <div class="links">
+              <?php print $edit_node; ?>
+              <?php if (!empty($remove_link)): print $remove_link; endif; ?>
+            </div>
           </div>
         </div>
       </div>

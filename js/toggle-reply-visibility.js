@@ -10,8 +10,8 @@
       var $toggle = $('#toggle-reply-visibility');
       var $replies = $('.oa-discussion-reply .oa-list-header');
       var expand = true;
-      var expandText = '<i class="icon-plus"></i> Expand All';
-      var collapseText = '<i class="icon-minus"></i> Collapse All';
+      var expandText = '<i class="icon-plus"></i> ' + Drupal.t('Expand All');
+      var collapseText = '<i class="icon-minus"></i> ' + Drupal.t('Collapse All');
 
       $toggle.html(expandText);
       $toggle.click(function() {

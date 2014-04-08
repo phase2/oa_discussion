@@ -26,10 +26,10 @@
 ?>
 <div class='oa-list oa-discussion-reply well clearfix <?php print $current_class; ?> <?php print $status_class; ?> <?php print $nid_class; ?>'>
   <div class="accordion" id="oa-reply-accordion-<?php print $index; ?>">
-    <div class="accordion-heading">
+    <div>
       <?php print $counter; ?>
-      <div class="accordion-toggle" data-toggle="collapse" data-parent="#oa-reply-accordion-<?php print $index; ?>" href="#oa-reply-body-<?php print $index; ?>">
-        <div class='oa-list-header oa-description '>
+      <div class="accordion-toggle">
+        <div class="oa-list-header oa-description<?php print !empty($in) ? '' : ' oa-discussion-hide' ?>">
           <div class='pull-right'>
             <?php if (!empty($unpublished)): ?>
               <span class="status"><?php print $unpublished; ?></span>
@@ -39,17 +39,7 @@
             <?php print t('by') . " $name"; ?>
             <?php print $field_user_picture; ?>
           </div>
-          <h5>
-            <?php
-              $header = empty($body_1) ? $title : $body_1;
-              print $header;
-            ?>
-          </h5>
-        </div>
-      </div>
-      <div id="oa-reply-body-<?php print $index; ?>" class="accordion-body collapse <?php print $in; ?>">
-        <div class="accordion-inner">
-          <?php if (strip_tags($body) !== $header):?>
+          <?php if (strip_tags($body)):?>
             <?php print $body; ?>
           <?php endif; ?>
           <?php print $field_oa_media; ?>

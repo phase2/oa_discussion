@@ -285,8 +285,8 @@ function oa_discussion_oa_messages_type_alter(&$message_type, $context) {
 function oa_discussion_oa_notifications_load_alter(&$notifications, $entity, $entity_type) {
   if ($entity_type == 'node') {
     $pid = oa_discussion_get_parent_nid($entity);
-    if ($pid) {
-      $notifications = oa_notifications_load_multiple(node_load($pid));
+    if ($pid && ($parent = node_load($pid))) {
+      $notifications = oa_notifications_load_multiple($parent);
     }
   }
 }

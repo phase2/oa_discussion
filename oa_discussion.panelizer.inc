@@ -457,6 +457,7 @@ function oa_discussion_panelizer_defaults() {
     $pane->configuration = array(
       'exposed' => array(
         'type' => 'oa_discussion_post',
+        'flagged' => '0',
       ),
       'context' => array(
         1 => 'panelizer',

@@ -62,7 +62,7 @@ recommended for many reasons:
    notified by these tangential replies often annoys users who subscribed to
    the main topic.
 
-3  Multi-threaded Discussions are a challenge from a performance perspective.
+3. Multi-threaded Discussions are a challenge from a performance perspective.
    Since any reply in the database could potentially be shown on page of the
    display, you must query all replies in order to render each page. For
    example, if 20 replies are shown per page, reply #100 could just as easily

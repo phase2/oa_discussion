@@ -25,7 +25,7 @@ antispam protection, modules such as Captcha can be added to the reply form.
 If something like Mollum is really needed, normal Drupal comments can still be
 enabled, although Mollum has been shown to actually cause more spam in some
 cases. In general, anonymous replies and comments should not be allowed on
-sites. If public comments/replies are needed, use the <a
+sites. If public comments/replies are needed, use the
 [Open Atrium Wiki (oa_wiki)](http://github.com/phase2/oa_wiki)
 content type with comments and Disqus installed rather than using Discussions.
 

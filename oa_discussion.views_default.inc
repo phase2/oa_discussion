@@ -704,18 +704,14 @@ function oa_discussion_views_default_views() {
   $handler->display->display_options['allow']['link_to_view'] = 0;
   $handler->display->display_options['allow']['more_link'] = 0;
   $handler->display->display_options['allow']['path_override'] = 0;
-  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
-  $handler->display->display_options['allow']['exposed_form_configure'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-  $handler->display->display_options['exposed_form_overrides'] = array(
-    'type' => '',
-  );
   $handler->display->display_options['argument_input'] = array(
     'gid' => array(
-      'type' => 'none',
-      'context' => 'entity:fieldable_panels_pane.field-map-address',
-      'context_optional' => 0,
+      'type' => 'context',
+      'context' => 'entity:node.nid',
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '',
       'label' => 'OG membership: Group ID',
@@ -1235,13 +1231,7 @@ function oa_discussion_views_default_views() {
   $handler->display->display_options['allow']['path_override'] = 0;
   $handler->display->display_options['allow']['title_override'] = 0;
   $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
-  $handler->display->display_options['allow']['exposed_form_configure'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-  $handler->display->display_options['exposed_form_overrides'] = array(
-    'filters' => array(
-      'type' => '',
-    ),
-  );
   $handler->display->display_options['argument_input'] = array(
     'uid' => array(
       'type' => 'context',

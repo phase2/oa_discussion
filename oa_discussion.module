@@ -36,13 +36,15 @@ function oa_discussion_menu() {
     'type' => MENU_CALLBACK,
     'page callback' => 'oa_discussion_remove',
     'page arguments' => array(1),
-    'access arguments' => array('create oa discussion post content'),
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
   );
   $items['node/%node/publish'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'oa_discussion_publish',
     'page arguments' => array(1),
-    'access arguments' => array('create oa discussion post content'),
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
   );
   $items['oa_discussion/ajax/mark-read/%'] = array(
     'type' => MENU_CALLBACK,

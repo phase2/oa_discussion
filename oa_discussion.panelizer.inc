@@ -56,7 +56,7 @@ function oa_discussion_panelizer_defaults() {
       'contentmain' => NULL,
     ),
     'sidebar' => array(
-      'style' => '0',
+      'style' => 'oa_styles_oa_pane',
     ),
   );
   $display->cache = array();

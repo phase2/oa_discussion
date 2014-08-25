@@ -24,14 +24,16 @@
  * @ingroup views_templates
  */
 ?>
-<div class='oa-list oa-discussion-reply well clearfix <?php print $current_class; ?> <?php print $status_class; ?> <?php print $nid_class; ?>'>
+<div
+  class='oa-list oa-discussion-reply well clearfix <?php print $current_class; ?> <?php print $status_class; ?> <?php print $nid_class; ?>'>
   <div class="accordion" id="oa-reply-accordion-<?php print $index; ?>">
     <div>
       <?php print $counter; ?>
       <div class="accordion-toggle">
-        <div class="oa-list-header oa-description<?php print !empty($in) ? '' : ' oa-discussion-hide' ?>">
-          <div class='pull-right'>
-            <?php if (!empty($unpublished)): ?>
+        <div
+          class="oa-list-header oa-description<?php print !empty($in) ? '' : ' oa-discussion-hide' ?>">
+          <div class='oa-pull-right'>
+          <?php if (!empty($unpublished)): ?>
               <span class="status"><?php print $unpublished; ?></span>
             <?php endif; ?>
             <?php print $timestamp; ?>
@@ -40,7 +42,7 @@
             <?php print $field_user_picture; ?>
           </div>
           <div class="oa-reply-body">
-            <?php if (strip_tags($body)):?>
+            <?php if (strip_tags($body)): ?>
               <?php print $body; ?>
             <?php else: ?>
               <?php print $title; ?>

@@ -145,7 +145,9 @@ function oa_discussion_reply_form_submit($form, &$form_state) {
       foreach ($media as $delta => $file) {
         if (is_numeric($delta)) {
           $file = file_load($file['fid']);
-          $files[] = $file->filename;
+          if (!empty($file->filename)) {
+            $files[] = $file->filename;
+          }
         }
       }
       $title = 'Attached ' . implode(', ', $files);

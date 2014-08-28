@@ -465,9 +465,9 @@ function oa_discussion_views_default_views() {
   $handler->display->display_options['fields']['field_oa_media']['settings'] = array(
     'file_view_mode' => 'preview',
     'colorbox_view_mode' => 'colorbox',
-    'fixed_width' => '800',
-    'fixed_height' => '600',
-    'colorbox_gallery' => 'field_page',
+    'fixed_width' => '',
+    'fixed_height' => '',
+    'colorbox_gallery' => 'page',
     'colorbox_gallery_custom' => '',
     'colorbox_caption' => 'none',
     'audio_playlist' => 0,

@@ -76,12 +76,12 @@
 
 .oa-media-list {
   width: 100%;
-}
-
-.oa-media-list {
   border-bottom: 1px solid #e3e3e3;
   margin: 10px -15px 0 -15px;
   padding: 0 15px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .views-row-last .oa-media-list {

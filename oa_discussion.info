@@ -74,6 +74,7 @@ features[variable][] = node_submitted_oa_discussion_post
 features[variable][] = panelizer_defaults_node_oa_discussion_post
 features[views_view][] = open_atrium_discussions
 features_exclude[dependencies][oa_discussion] = oa_discussion
+files[] = tests/oa_discussion.test
 files[] = views/views_handler_argument_oa_parent_id.inc
 files[] = views/views_handler_field_oa_parent_id.inc
 files[] = views/views_handler_relationship_oa_parent_id.inc

@@ -485,24 +485,38 @@ function oa_discussion_form_node_delete_confirm_alter(&$form, &$form_state) {
  * Implements hook_node_update().
  */
 function oa_discussion_node_update($node) {
+  global $conf;
   switch ($node->type) {
     case 'oa_discussion_post':
-      if (($node->oa_section_ref[LANGUAGE_NONE][0]['target_id'] !== $node->original->oa_section_ref[LANGUAGE_NONE][0]['target_id']) ||
-      ($node->og_group_ref[LANGUAGE_NONE][0]['target_id'] !== $node->og_group_ref[LANGUAGE_NONE][0]['target_id'])) {
+      $section = isset($node->oa_section_ref[LANGUAGE_NONE][0]['target_id']) ? $node->oa_section_ref[LANGUAGE_NONE][0]['target_id'] : NULL;
+      $group = isset($node->og_group_ref[LANGUAGE_NONE][0]['target_id']) ? $node->og_group_ref[LANGUAGE_NONE][0]['target_id']  : NULL;
+      $original_section = isset($node->original->oa_section_ref[LANGUAGE_NONE][0]['target_id']) ? $node->original->oa_section_ref[LANGUAGE_NONE][0]['target_id'] : NULL;
+      $original_group = isset($node->original->og_group_ref[LANGUAGE_NONE][0]['target_id']) ? $node->original->og_group_ref[LANGUAGE_NONE][0]['target_id'] : NULL;
+      if ($section !== $original_section || $group !== $original_group) {
         $children = oa_discussion_get_children($node);
 
         // Update children section/space.
         if (!empty($children)) {
           $notifications = variable_get('oa_messages_notifications', TRUE);
           // Turn off notifications for these updates.
-          variable_set('oa_messages_notifications', FALSE);
+          $conf['oa_messages_notifications'] = FALSE;
           foreach ($children as $nid) {
             $child = node_load($nid);
-            $child->oa_section_ref[LANGUAGE_NONE][0]['target_id'] = $node->oa_section_ref[LANGUAGE_NONE][0]['target_id'];
-            $child->og_group_ref[LANGUAGE_NONE][0]['target_id'] = $node->og_group_ref[LANGUAGE_NONE][0]['target_id'];
+            if ($section) {
+              $child->oa_section_ref[LANGUAGE_NONE][0]['target_id'] = $section;
+            }
+            else {
+              unset($child->oa_section_ref);
+            }
+            if ($group) {
+              $child->og_group_ref[LANGUAGE_NONE][0]['target_id'] = $group;
+            }
+            else {
+              unset($child->og_group_ref);
+            }
             node_save($child);
           }
-          variable_set('oa_messages_notifications', $notifications);
+          $conf['oa_messages_notifications'] = $notifications;
         }
       }
       break;

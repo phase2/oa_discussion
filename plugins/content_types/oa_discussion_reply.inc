@@ -144,7 +144,7 @@ function oa_discussion_reply_form_submit($form, &$form_state) {
     elseif (!empty($media)) {
       $files = array();
       foreach ($media as $delta => $file) {
-        if (is_numeric($delta)) {
+        if (is_numeric($delta) && !empty($file['fid'])) {
           $file = file_load($file['fid']);
           if (!empty($file->filename)) {
             $files[] = $file->filename;

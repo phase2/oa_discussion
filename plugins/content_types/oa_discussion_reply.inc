@@ -123,7 +123,7 @@ function oa_discussion_reply_form_submit($form, &$form_state) {
   $node = $form['#node'];
   $parent_id = $form['#parent_id'];
   $body = $form_state['values']['body'];
-  $media = isset($form_state['values']['field_oa_media']) ? $form_state['values']['field_oa_media'][LANGUAGE_NONE] : array();
+  $media = isset($form_state['values']['field_oa_media']) ? $form_state['values']['field_oa_media'][$form['field_oa_media']['#language']] : array();
   if (!empty($parent_id) && (!empty($body['value']) || !empty($media))) {
     // determine a title for the reply
     if (!empty($form_state['values']['subject'])) {

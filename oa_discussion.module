@@ -497,9 +497,9 @@ function oa_discussion_node_update($node) {
 
         // Update children section/space.
         if (!empty($children)) {
-          $notifications = variable_get('oa_messages_notifications', TRUE);
-          // Turn off notifications for these updates.
-          $conf['oa_messages_notifications'] = FALSE;
+          if (function_exists('oa_notification_skip')) {
+            oa_notification_skip(TRUE);
+          }
           foreach ($children as $nid) {
             $child = node_load($nid);
             if ($section) {
@@ -516,7 +516,9 @@ function oa_discussion_node_update($node) {
             }
             node_save($child);
           }
-          $conf['oa_messages_notifications'] = $notifications;
+          if (function_exists('oa_notification_skip')) {
+            oa_notification_skip(FALSE);
+          }
         }
       }
       break;
@@ -544,10 +546,13 @@ function oa_discussion_get_children($parent) {
  * Form submit to delete discussion post children.
  */
 function oa_discussion_confirm_delete_form_submit($form, &$form_state) {
+  if (function_exists('oa_notification_skip')) {
+    oa_notification_skip(TRUE);
+  }
   $nids = oa_discussion_get_children($form['#node']);
-  $notifications = variable_get('oa_messages_notifications', TRUE);
   // Turn off notifications for these updates.
-  variable_set('oa_messages_notifications', FALSE);
   node_delete_multiple($nids);
-  variable_set('oa_messages_notifications', $notifications);
+  if (function_exists('oa_notification_skip')) {
+    oa_notification_skip(FALSE);
+  }
 }

@@ -1,5 +1,5 @@
 name = Open Atrium Discussion
-description = Discussion posts for Open Atrium
+description = Discussion forums for Open Atrium
 core = 7.x
 package = Open Atrium
 project = oa_discussion

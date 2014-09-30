@@ -15,6 +15,7 @@ class oa_discussion extends oa_coreBaseWebTest {
   }
 
   function test_oa_subspacesSectionAccess() {
+    variable_del('drupal_test_email_collector');
     $langcode = LANGUAGE_NONE;
     $section_key = "oa_section_ref[$langcode]";
     $group_key = "og_group_ref[$langcode][0][default]";

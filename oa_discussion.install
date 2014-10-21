@@ -29,6 +29,6 @@ function oa_discussion_install_section_type() {
 /**
  * Update the Discussion section term.
  */
-function oa_discussion_update_7001() {
+function oa_discussion_update_7002() {
   oa_discussion_install_section_type();
 }

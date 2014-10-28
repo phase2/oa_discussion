@@ -123,7 +123,8 @@ function oa_discussion_reply_form_submit($form, &$form_state) {
   $node = $form['#node'];
   $parent_id = $form['#parent_id'];
   $body = $form_state['values']['body'];
-  $media = isset($form_state['values']['field_oa_media']) ? $form_state['values']['field_oa_media'][LANGUAGE_NONE] : array();
+  $field_oa_media_language = $form['field_oa_media']['#language'];
+  $media = isset($form_state['values']['field_oa_media']) ? $form_state['values']['field_oa_media'][$field_oa_media_language] : array();
   if (!empty($parent_id) && (!empty($body['value']) || !empty($media))) {
     // determine a title for the reply
     if (!empty($form_state['values']['subject'])) {
@@ -143,7 +144,7 @@ function oa_discussion_reply_form_submit($form, &$form_state) {
     elseif (!empty($media)) {
       $files = array();
       foreach ($media as $delta => $file) {
-        if (is_numeric($delta)) {
+        if (is_numeric($delta) && !empty($file['fid'])) {
           $file = file_load($file['fid']);
           if (!empty($file->filename)) {
             $files[] = $file->filename;

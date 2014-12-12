@@ -95,3 +95,17 @@ function oa_discussion_node_info() {
   drupal_alter('node_info', $items);
   return $items;
 }
+
+/**
+ * Implements hook_paragraphs_info().
+ */
+function oa_discussion_paragraphs_info() {
+  $items = array(
+    'oa_related_discussion' => array(
+      'name' => 'Related Discussion',
+      'bundle' => 'oa_related_discussion',
+      'locked' => '1',
+    ),
+  );
+  return $items;
+}

@@ -693,6 +693,57 @@ function oa_discussion_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-oa_related_discussion-field_oa_related_discussion'
+  $field_instances['paragraphs_item-oa_related_discussion-field_oa_related_discussion'] = array(
+    'bundle' => 'oa_related_discussion',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'heading',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'featured',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_oa_related_discussion',
+    'label' => 'Related Discussion',
+    'options_limit' => FALSE,
+    'options_limit_empty_behaviour' => 0,
+    'options_limit_fields' => array(),
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'references_dialog_add' => 1,
+        'references_dialog_edit' => 0,
+        'references_dialog_search' => 1,
+        'references_dialog_search_view' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Attachments');
@@ -704,6 +755,7 @@ function oa_discussion_field_default_field_instances() {
   t('OG vocabulary');
   t('Open Atrium Section');
   t('Parent');
+  t('Related Discussion');
   t('Section');
   t('Space');
 

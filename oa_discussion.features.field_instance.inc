@@ -393,6 +393,7 @@ function oa_discussion_field_default_field_instances() {
   // Exported field_instance: 'node-oa_discussion_post-field_oa_media'
   $field_instances['node-oa_discussion_post-field_oa_media'] = array(
     'bundle' => 'oa_discussion_post',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(

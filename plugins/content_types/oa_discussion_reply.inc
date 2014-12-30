@@ -13,6 +13,9 @@ $plugin = array(
   'edit form' => 'oa_discussion_reply_settings_form',
   'render callback' => 'oa_discussion_reply_render',
   'required context' => new ctools_context_required(t('Node'), 'node'),
+  'defaults' => array(
+    'oa_discussion_show_attach' => TRUE,
+  ),
 );
 
 /**
@@ -29,7 +32,7 @@ function oa_discussion_reply_render($subtype, $conf, $args, $context = NULL) {
   if (!og_user_access('node', $gid, 'write' . ' ' . $subtype . ' ' . 'to discussion post')) {
     return;
   }
-  $output = drupal_get_form('oa_discussion_reply_form', $node);
+  $output = drupal_get_form('oa_discussion_reply_form', $node, $conf);
 
   $block = new stdClass();
   $block->title = t('New Reply');
@@ -41,6 +44,14 @@ function oa_discussion_reply_render($subtype, $conf, $args, $context = NULL) {
  * Empty config form
  */
 function oa_discussion_reply_settings_form($form, &$form_state) {
+  $conf = $form_state['conf'];
+
+  $form['oa_discussion_show_attach'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show file attachment field'),
+    '#default_value' => isset($conf['oa_discussion_show_attach']) ? $conf['oa_discussion_show_attach'] : TRUE,
+  );
+
   return $form;
 }
 
@@ -64,10 +75,12 @@ function oa_discussion_reply_settings_form_submit($form, &$form_state) {
  *    The state of the form
  * @param $node
  *    The node being viewed/edited
+ * @param $conf
+ *    The pane configuration settings
  * @return
  *    The form
  */
-function oa_discussion_reply_form($form, &$form_state, $node) {
+function oa_discussion_reply_form($form, &$form_state, $node, $conf) {
   $parent = field_get_items('node', $node, 'oa_parent');
   $parent_id = !empty($parent[0]['target_id']) ? $parent[0]['target_id'] : $node->nid;
 
@@ -94,8 +107,9 @@ function oa_discussion_reply_form($form, &$form_state, $node) {
   $form['#parents'] = empty($form['#parents']) ? array() : $form['#parents'];
 
   // Only show attachment form if the user is allowed to add attachments.
+  $show_attach = isset($conf['oa_discussion_show_attach']) ? $conf['oa_discussion_show_attach'] : TRUE;
   $gid = $node->{OG_AUDIENCE_FIELD}[LANGUAGE_NONE][0]['target_id'];
-  if (og_user_access('node', $gid, 'add attachment to' . ' ' . $node->type)) {
+  if ($show_attach && og_user_access('node', $gid, 'add attachment to' . ' ' . $node->type)) {
     // mimic how the attachment field is rendered in normal node/add forms
     $field_name = 'field_oa_media';
     $field = field_info_field($field_name);

@@ -447,10 +447,11 @@ function oa_discussion_panelizer_defaults() {
       'context' => 'panelizer',
       'override_title' => 0,
       'override_title_text' => '',
-      'form_build_id' => 'form-7tmkqS8ehvmZxk3tWAkdyC4rrhWduwLz_8hUKWRw7V4',
-      'form_token' => 'bvwszgP75OB9jsrVmstvJN7xd9u3UG9_Hnq09fN5gTo',
+      'form_build_id' => 'form-IZiYR51pI-94dO-eAKYn8AN8whoIqkRQX1Lh-epbbIA',
+      'form_token' => 'GyBs2weT2cnuK35fw35wpHel2t1jj0C3mEtHj6PkmnU',
       'form_id' => 'oa_discussion_reply_settings_form',
       'op' => 'Finish',
+      'oa_discussion_show_attach' => 0,
     );
     $pane->cache = array();
     $pane->style = array(

@@ -579,7 +579,11 @@ function oa_discussion_panelizer_defaults() {
     $pane->access = array();
     $pane->configuration = array(
       'exposed' => array(
-        'type' => 'oa_discussion_post',
+        'og_group_ref_target_id' => '',
+        'og_group_ref_target_id_mine' => 0,
+        'og_subspaces_view_all' => 1,
+        'og_subspaces_view_parent' => 0,
+        'oa_section_ref_target_id' => '',
         'flagged' => '0',
       ),
       'context' => array(

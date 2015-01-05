@@ -679,7 +679,7 @@ function oa_discussion_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Parent (oa_parent) */
+  /* Filter criterion: Content: Parent (oa_parent:target_id) */
   $handler->display->display_options['filters']['oa_parent_target_id']['id'] = 'oa_parent_target_id';
   $handler->display->display_options['filters']['oa_parent_target_id']['table'] = 'field_data_oa_parent';
   $handler->display->display_options['filters']['oa_parent_target_id']['field'] = 'oa_parent_target_id';
@@ -726,7 +726,7 @@ function oa_discussion_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'reverse_oa_parent_node';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Groups audience (og_group_ref) */
+  /* Filter criterion: Content: Groups audience (og_group_ref:target_id) */
   $handler->display->display_options['filters']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['filters']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['filters']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -741,7 +741,7 @@ function oa_discussion_views_default_views() {
     3 => 0,
     4 => 0,
   );
-  /* Filter criterion: Content: Open Atrium Section (oa_section_ref) */
+  /* Filter criterion: Content: Open Atrium Section (oa_section_ref:target_id) */
   $handler->display->display_options['filters']['oa_section_ref_target_id']['id'] = 'oa_section_ref_target_id';
   $handler->display->display_options['filters']['oa_section_ref_target_id']['table'] = 'field_data_oa_section_ref';
   $handler->display->display_options['filters']['oa_section_ref_target_id']['field'] = 'oa_section_ref_target_id';
